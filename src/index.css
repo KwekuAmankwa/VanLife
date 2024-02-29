@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #FFF7ED;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  background: #FFF7ED;
+  padding: 20px;
+}
+
+nav > a {
+  text-decoration: none;
+}
+
+.navbar{
+  display: flex;
+  text-decoration: none;
+  gap: 10px;
+}
+.logo{
+  max-width: 150px;
+  height: 40px;
+}
+
+main{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url(/home-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main-content{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 30px 15px;
+}
+
+.find-van{
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF8C38;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+footer{
+  padding: 15px;
+  text-align: center;
+  background: #252525;
+  color: #AAAAAA;
+}
+
+.about-img{
+  width: 100%;
+}
+
+.mission{
+  padding: 20px;
+}
+
+.destination-van{
+  background-color: #FFCC8D;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.destination-h2{
+  margin-top: 0;
+}
+
+.destination-button{
+  text-decoration: none;
+  color: white;
+  background: #161616;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
