@@ -4,7 +4,7 @@ import Home from './assets/home'
 import About from './assets/about'
 import logo from "/logog.png"
 import Vans from './assets/vans'
-
+import "./server"
 
 
 

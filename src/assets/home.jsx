@@ -16,6 +16,5 @@ export default function Home() {
         </main>
       </>
     )
-  }
+}
 
-//   <img src={logo} alt="vanlife-logo" className="logo"/>
