@@ -4,8 +4,8 @@ import Home from './assets/home'
 import About from './assets/about'
 import logo from "/logog.png"
 import Vans from './assets/vans'
+import VanDetails from './assets/vandetails'
 import "./server"
-
 
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
         <Route path= "/" element={<Home/>} />
         <Route path= "/about" element={<About/>} />
         <Route path= "/vans" element={<Vans/>} />
+        <Route path= "/vans/:id" element={<VanDetails/>} />
       </Routes>
       <footer>Ⓒ 2022 #VANLIFE</footer>
     </BrowserRouter>
