@@ -23,6 +23,12 @@ nav > a {
   color: #4D4D4D;
 }
 
+.navbar a.active-link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #161616;
+}
+
 .navbar{
   display: flex;
   text-decoration: none;
