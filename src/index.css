@@ -212,13 +212,14 @@ p > span {
   display: flex;
   align-items: baseline;
 }
+
 .van-info p{
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 
-.van-info span{
+.van-details-price span{
   font-size: 20px;
 }
 
@@ -349,15 +350,18 @@ font-weight: normal;
 }
 
 .back-button {
-  display: block;
+  display: flex;
+  align-items: center;
   color: gray;
-  text-decoration: none;
   margin-top: 30px;
+  justify-content: flex-start;
+  gap: 5px;
 }
 
 .back-button span{
   font-weight: 500;
-  color: black;
+  color: #474747;
+  text-decoration: underline;
 }
 
 .back-button span:hover {
