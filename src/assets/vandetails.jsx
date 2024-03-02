@@ -12,8 +12,6 @@ export default function VanDetails(){
         .then(data => setVan(data.vans))
     },[params.id])
 
-    console.log(params)
-
     return(
         <div className="van-info-container">
             {van ? (

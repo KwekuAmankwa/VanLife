@@ -20,8 +20,8 @@ export default function HostVans(){
             <div className="host-van-single" key={van.id}>
                 <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
                 <div className="host-van-info">
-                    <h3>{van.name}</h3>
-                    <p>${van.price}/day</p>
+                    <p className="host-van-name">{van.name}</p>
+                    <p className="host-van-price">${van.price}/day</p>
                 </div>
             </div>
         </Link>
@@ -33,7 +33,7 @@ export default function HostVans(){
             <div className="host-vans-list">
                 {
                     vans.length > 0 ? (
-                        <section>
+                        <section className="van-singles">
                             {hostVansEls}
                         </section>
 
