@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 export default function HostVanDetail(){
 
@@ -19,20 +19,48 @@ export default function HostVanDetail(){
         <>
             { van ? 
                 (
-                    
-                    
-                    
-                    <div className="host-van-initial">
-                        <div className="host-van-index-image">
-                            <img src= {van.imageUrl} alt="" />    
+                    <section className="host-van-index">
+                        <Link 
+                            to=".." 
+                            relative="path" 
+                            className="back-button">
+                            &larr; <span>Back to all vans</span>
+                        </Link>
+                        <div className="host-van-index-wrapper">
+                            <div className="host-van-initial">
+                                <div className="host-van-index-image">
+                                    <img src= {van.imageUrl} alt="" />    
+                                </div>
+                                <div className="host-van-index-details">
+                                    <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                                    <p className="host-van-index-name">{van.name}</p>
+                                    <p className="host-van-index-price">${van.price} <span>/day</span> </p>
+                                </div>
+                            </div>
+                            <nav className="host-nav-layout">
+                                <NavLink
+                                    to="/host/vans/:id"
+                                    end
+                                    style = {({isActive}) => isActive ? activeStyles : null}
+                                    >
+                                        Details
+                                </NavLink>
+                                <NavLink
+                                    to= "/host/vans/:id/pricing"
+                                    style = {({isActive}) => isActive ? activeStyles : null}
+                                    >
+                                        Pricing
+                                </NavLink>
+                                <NavLink
+                                    to= "/host/vans/:id/photos"
+                                    style = {({isActive}) => isActive ? activeStyles : null}
+                                    >
+                                        Photos
+                                </NavLink>
+                            </nav>
+                            <Outlet />
                         </div>
-                        <div className="host-van-index-details">
-                            <i className={`van-type ${van.type} selected`}>{van.type}</i>
-                            <p className="host-van-index-name">{van.name}</p>
-                            <p className="host-van-index-price">${van.price} <span>/day</span> </p>
-                        </div>
-                    </div>
-                    
+                    </section>
                     
                 ) 
             : 
