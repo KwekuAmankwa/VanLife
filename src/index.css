@@ -363,3 +363,37 @@ font-weight: normal;
 .back-button span:hover {
   text-decoration: underline;
 }
+
+.host-vaninfo{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 14px;
+}
+
+.host-vaninfo h4{
+  margin: 0;
+}
+.host-vaninfo span {
+  margin: 0;
+  font-weight: 500;
+}
+.host-vaninfo p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  font-size: 24px;
+  font-weight: 700;
+}
+.host-vaninfo p > span{
+  font-size: 16px;
+}
+
+.host-vanimage {
+  margin-top: 20px;
+}
+.host-vanimage img{
+  width: 100px;
+  border-radius: 5px;
+}
