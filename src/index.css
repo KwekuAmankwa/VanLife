@@ -343,8 +343,9 @@ font-weight: normal;
 }
 
 .host-nav-layout a{
-  font-weight: 400;
-  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: 500;
+  color: gray;
 }
 
 .back-button {
