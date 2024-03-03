@@ -16,13 +16,14 @@ import HostVanInfo from './assets/host/hostvaninfo'
 import HostVanPricing from './assets/host/hostvanpricing'
 import HostVanPhotos from './assets/host/hostvanphotos'
 import NotFound from './assets/notfound'
+import Error from './components/error'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path= "/" element = {<Layout />} >
     <Route index element={<Home/>} />
     <Route path= "about" element={<About/>} />
-    <Route path= "vans" element={<Vans/>} loader={vansLoader} />
+    <Route path= "vans" element={<Vans/>} loader={vansLoader} errorElement= {<Error/>} />
     <Route path= "vans/:id" element={<VanDetails/>} />
 
     <Route path= "/host" element={<HostLayout/>}>
