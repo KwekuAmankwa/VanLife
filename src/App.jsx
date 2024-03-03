@@ -2,8 +2,8 @@ import React from 'react'
 import {RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Link} from "react-router-dom"
 import Home from './assets/home'
 import About from './assets/about'
-import Vans, {loader as vansLoader} from './assets/vans'
-import VanDetails from './assets/vandetails'
+import Vans, {loader as vansLoader} from './assets/vans/vans'
+import VanDetails from './assets/vans/vandetails'
 import "./server"
 import Layout from './components/layout'
 import Dashboard from './assets/host/dashboard'
