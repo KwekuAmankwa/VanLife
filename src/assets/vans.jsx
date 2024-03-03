@@ -6,6 +6,7 @@ import { getVans } from "../api";
 
 export default function Vans() {
     const [vans, setVans] = useState([])
+    const [Loading, setLoading] =useState(false)
 
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type")
@@ -18,11 +19,15 @@ export default function Vans() {
 
     useEffect(() => {
         async function loadVans(){
+            setLoading(true)
             const data = await getVans()
             setVans(data)
+            setLoading(false)
         }
         loadVans()
     },[])
+
+
 
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
@@ -50,6 +55,9 @@ export default function Vans() {
         </div>
     ))
 
+
+
+
     function handleFilterChange(key, value) {
         setSearchParams(prevParams => {
             if (value === null) {
@@ -60,6 +68,15 @@ export default function Vans() {
             return prevParams
         })
     }
+
+
+
+    if (Loading){
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
 
     return(
       <div className="vans-container">
