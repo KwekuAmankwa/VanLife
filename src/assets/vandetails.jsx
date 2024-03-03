@@ -15,6 +15,7 @@ export default function VanDetails(){
 
 
     const search = location.state?.search || ""
+    const locType = location.state?.type || "all"
 
     return(
         <div className="van-info-container">
@@ -24,7 +25,7 @@ export default function VanDetails(){
                         to={`..${search}`} 
                         relative="path" 
                         className="back-button">
-                        &larr; <span>Back to all vans</span>
+                        &larr; <span>Back to {locType} vans</span>
                     </Link>
                     <img src= {van.imageUrl} alt="" className="van-details-img" />
                     <i className={`van-type ${van.type} selected`}>{van.type}</i>
