@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom"
+import { getVans } from "../api";
 
 
 
@@ -9,27 +10,42 @@ export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type")
 
+    // useEffect(() => {
+    //     fetch("api/vans")
+    //     .then(res => res.json())
+    //     .then(data => setVans(data.vans))
+    // },[])
+
     useEffect(() => {
-        fetch("api/vans")
-        .then(res => res.json())
-        .then(data => setVans(data.vans))
+        async function loadVans(){
+            const data = await getVans()
+            setVans(data)
+        }
+        loadVans()
     },[])
 
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
         : vans
 
+    const lowerType = typeFilter ? typeFilter.toLowerCase() : ""
+
     const allVans = displayedVans.map(van => (
         <div key={van.id} className="van-card">
-            <Link to= {van.id} state={{ search: `?${searchParams.toString()}` }} className="van-link">
-                <div className="card-image">
-                    <img src={van.imageUrl} alt="" className="van-image"/>
-                </div>
-                <div className="van-details">
-                    <p>{van.name}</p>
-                    <p>${van.price}<span>/day</span></p>
-                </div>
-                <i className={`van-type ${van.type} selected`}>{van.type}</i>  
+            <Link 
+                to= {van.id} 
+                state={{ 
+                    search: `?${searchParams.toString()}`,
+                    type: `${lowerType}` }} 
+                className="van-link">
+                    <div className="card-image">
+                        <img src={van.imageUrl} alt="" className="van-image"/>
+                    </div>
+                    <div className="van-details">
+                        <p>{van.name}</p>
+                        <p>${van.price}<span>/day</span></p>
+                    </div>
+                    <i className={`van-type ${van.type} selected`}>{van.type}</i>  
             </Link> 
         </div>
     ))
