@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import React from "react";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
+import { getVans } from "../../api";
 
+
+export function loader({params}){
+    return getVans(params.id)
+}
 
 export default function VanDetails(){
-    const params = useParams()
     const location = useLocation()
-    const [van, setVan] = useState(null)
+    const van = useLoaderData()
 
-    useEffect(() => {
-        fetch(`/api/vans/${params.id}`)
-        .then(res => res.json())
-        .then(data => setVan(data.vans))
-    },[params.id])
 
 
     const search = location.state?.search || ""
@@ -19,23 +18,20 @@ export default function VanDetails(){
 
     return(
         <div className="van-info-container">
-            {van ? (
-                <div className="van-info">
-                    <Link 
-                        to={`..${search}`} 
-                        relative="path" 
-                        className="back-button">
-                        &larr; <span>Back to {locType} vans</span>
-                    </Link>
-                    <img src= {van.imageUrl} alt="" className="van-details-img" />
-                    <i className={`van-type ${van.type} selected`}>{van.type}</i>
-                    <p className="van-details-name">{van.name}</p>
-                    <p className="van-details-price">${van.price} <span>/day</span></p>
-                    <p className="van-details-desc">{van.description}</p>
-                    <button className="find-van btn">Rent this van</button>
-                </div>    
-                ) : <h2>Loading...</h2>
-            }
+            <div className="van-info">
+                <Link 
+                    to={`..${search}`} 
+                    relative="path" 
+                    className="back-button">
+                    &larr; <span>Back to {locType} vans</span>
+                </Link>
+                <img src= {van.imageUrl} alt="" className="van-details-img" />
+                <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                <p className="van-details-name">{van.name}</p>
+                <p className="van-details-price">${van.price} <span>/day</span></p>
+                <p className="van-details-desc">{van.description}</p>
+                <button className="find-van btn">Rent this van</button>
+            </div>    
         </div>
     )
 }
