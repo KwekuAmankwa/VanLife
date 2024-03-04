@@ -10,7 +10,6 @@ export function loader(){
 
 export default function Vans() {
     const vans = useLoaderData()
-    console.log(vans)
 
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type")
