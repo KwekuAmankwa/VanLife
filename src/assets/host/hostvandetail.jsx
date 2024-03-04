@@ -1,16 +1,17 @@
 import React from "react";
 import { useLoaderData} from "react-router-dom";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { getVans } from "../../api";
+import { getHostVans } from "../../api";
 
 
 export function loader({params}){
-    return getVans(params.id)
+    return getHostVans(params.id)
 }
 
 export default function HostVanDetail(){
 
     const van = useLoaderData()
+
 
     const activeStyles = {
         fontWeight: "bold",
