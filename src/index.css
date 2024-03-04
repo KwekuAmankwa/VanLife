@@ -33,10 +33,19 @@ nav > a {
   display: flex;
   text-decoration: none;
   gap: 10px;
+  align-items: center;
 }
 .logo{
   max-width: 150px;
   /* height: 40px; */
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+}
+.login-link img {
+  width: 20px;
 }
 
 main{
@@ -435,4 +444,67 @@ button.van-type{
   color: white;
   border-radius: 5px;
   font-weight: 600;
+}
+
+.login-container {
+  padding: 20px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+}
+.login-inputs input {
+  height: 42px;
+  border: 1px solid rgba(209, 213, 219);
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+}
+.login-inputs input:first-of-type{
+  border-radius: 6px 6px 0px 0px;
+}
+.login-inputs input:last-of-type{
+  border-radius: 0px 0px 6px 6px;
+  border-top: none;
+}
+
+.login-form button {
+  height: 55px;
+  background: #FF8C38;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+.form-suggest {
+  display:flex;
+  justify-content: center;
+  gap: 3px;
+}
+
+.form-suggest p {
+  font-weight: 400;
+}
+.form-suggest p:last-of-type {
+  color: #FF8C38;
+  font-weight: bold;
 }
