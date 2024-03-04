@@ -426,6 +426,7 @@ font-weight: normal;
 
 button.van-type{
   cursor: pointer;
+  font-family: "Inter", sans-serif;
 }
 
 .missing-page{
