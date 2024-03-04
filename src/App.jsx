@@ -3,7 +3,7 @@ import {RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Li
 import Home from './assets/home'
 import About from './assets/about'
 import Vans, {loader as vansLoader} from './assets/vans/vans'
-import VanDetails from './assets/vans/vandetails'
+import VanDetails, {loader as vanDetailsLoader} from './assets/vans/vandetails'
 import "./server"
 import Layout from './components/layout'
 import Dashboard from './assets/host/dashboard'
@@ -17,14 +17,16 @@ import HostVanPricing from './assets/host/hostvanpricing'
 import HostVanPhotos from './assets/host/hostvanphotos'
 import NotFound from './assets/notfound'
 import Error from './components/error'
+import Login from './assets/login'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path= "/" element = {<Layout />} >
     <Route index element={<Home/>} />
     <Route path= "about" element={<About/>} />
+    <Route path= "login" element={<Login />} />
     <Route path= "vans" element={<Vans/>} loader={vansLoader} errorElement= {<Error/>} />
-    <Route path= "vans/:id" element={<VanDetails/>} />
+    <Route path= "vans/:id" element={<VanDetails/>} loader={ vanDetailsLoader } />
 
     <Route path= "/host" element={<HostLayout/>}>
       <Route index element={<Dashboard/>} />
