@@ -1,6 +1,6 @@
-import { useState } from "react";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData, Form, useActionData, useNavigation } from "react-router-dom";
+import { loginUser } from "../api";
 
 
 
@@ -9,24 +9,23 @@ export function loader({request}){
      
 }
 
-
+export async function action({request}){
+    const formData = await request.formData()
+    const email = formData.get("email")
+    const password = formData.get("password")
+    try{
+        const data = await loginUser({email, password})
+        localStorage.setItem("loggedin", "true")
+        return redirect("/host")
+    }
+    catch(error){
+        return error.message
+    }
+}
 
 
 export default function Login(){
-    const [LoginForm, setLoginForm] = useState({email: "", password: ""})
-
-    function handleSubmit(e){
-        e.preventDefault()
-        console.log(LoginForm)
-    }
-
-    function handleChange(){
-        const {name, value} = e.target
-        setLoginForm(prevLogin => ({
-            ...prevLogin,
-            [name]: value
-        }))
-    }
+    const navigation = useNavigation()
 
     const message = useLoaderData()
 
@@ -34,27 +33,26 @@ export default function Login(){
         <div className="login-container">
             <h1>Sign in to your account</h1>
             {message && <h3>{message}</h3>}
-            <form className="login-form" onSubmit={handleSubmit} >
+
+            <Form className="login-form" method="post" replace >
                 <div className="login-inputs">
                     <input
                         className="input-email"
                         name="email"
                         type="email"
                         placeholder="Email"
-                        onChange={handleChange}
-                        value={LoginForm.email}
                     />
                     <input
                         className="input-password"
                         name="password"
                         type="password"
                         placeholder="Password"
-                        onChange={handleChange}
-                        value={LoginForm.password}
                     />
                 </div>
-                <button>Log in</button>
-            </form>
+                <button disabled= {navigation.state === "submitting"}>
+                    {navigation.state === "submitting" ? "Logging in..." : "Log in"}
+                </button>
+            </Form>
             <div className="form-suggest">
                 <p>Don't have an account?</p>
                 <p>Create one now</p>
