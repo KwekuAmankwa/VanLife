@@ -17,7 +17,7 @@ import HostVanPricing from './assets/host/hostvanpricing'
 import HostVanPhotos from './assets/host/hostvanphotos'
 import NotFound from './assets/notfound'
 import Error from './components/error'
-import Login, {loader as loginLoader} from './assets/login'
+import Login, {loader as loginLoader, action as loginAction} from './assets/login'
 import { requireAuth } from './utilities'
 
 // 
@@ -26,7 +26,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path= "/" element = {<Layout />} >
     <Route index element={<Home/>} />
     <Route path= "about" element={<About/>} />
-    <Route path= "login" element={<Login />} loader={loginLoader}  />
+    <Route path= "login" element={<Login />} loader={loginLoader} action={loginAction} />
     <Route path= "vans" element={<Vans/>} loader={vansLoader} errorElement= {<Error/>} />
     <Route path= "vans/:id" element={<VanDetails/>} loader={ vanDetailsLoader } />
 
