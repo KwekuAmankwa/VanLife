@@ -459,6 +459,10 @@ font-weight: normal;
   align-items: center;
   gap: 5px;
 }
+.review .text {
+  font-size: 16px;
+  font-weight: 500 ;
+}
 .review .info p{
   margin-bottom: 0;
 }
