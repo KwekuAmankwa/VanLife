@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAOhFnMRqWaZrfW9ntsiQSwWFDjdMRIf2o",
@@ -34,19 +34,29 @@ export async function getVan(id) {
     }
 }
 
-export async function getHostVans(id) {
-    const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: res.statusText,
-            status: res.status
-        }
-    }
-    const data = await res.json()
-    return data.vans
+export async function getHostVans() {
+    const q = query(vansCollectionRef, where("hostId", "==", "123"))
+    const querySnapshot = await getDocs(q)
+    const dataArr = querySnapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return dataArr
 }
+
+// export async function getHostVans(id) {
+//     const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
+//     const res = await fetch(url)
+//     if (!res.ok) {
+//         throw {
+//             message: "Failed to fetch vans",
+//             statusText: res.statusText,
+//             status: res.status
+//         }
+//     }
+//     const data = await res.json()
+//     return data.vans
+// }
 
 export async function loginUser(creds) {
     const res = await fetch("/api/login",
