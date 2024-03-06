@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { redirect, useLoaderData, Form, useActionData, useNavigation } from "react-router-dom";
 import { loginUser } from "../api";
 
@@ -17,10 +17,13 @@ export async function action({request}){
     try{
         const data = await loginUser({email, password})
         localStorage.setItem("loggedin", "true")
-        return redirect(pathname)
+        // return redirect(pathname)
+        return window.location.replace(pathname)
     }
     catch(error){
+        
         return error.message
+        
     }
 }
 
@@ -28,35 +31,37 @@ export async function action({request}){
 export default function Login(){
     const navigation = useNavigation()
     const errorMessage = useActionData()
+    // console.log(errorMessage)
     const message = useLoaderData()
 
     return (
         <div className="login-container">
-            <h1>Sign in to your account</h1>
-            {message && <h3>{message}</h3>}
-            <Form className="login-form" method="post" replace >
-                <div className="login-inputs">
-                    <input
-                        className="input-email"
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                    />
-                    <input
-                        className="input-password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                    />
+                <h1>Sign in to your account</h1>
+                {message && <h3>{message}</h3>}
+                <Form className="login-form" method="post" replace >
+                    <div className="login-inputs">
+                        <input
+                            className="input-email"
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                        />
+                        <input
+                            className="input-password"
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                        />
+                    </div>
+                    <button disabled= {navigation.state === "submitting"}>
+                        {navigation.state === "submitting" ? "Logging in..." : "Log in"}
+                    </button>
+                </Form>
+                <div className="form-suggest">
+                    <p>Don't have an account?</p>
+                    <p>Create one now</p>
                 </div>
-                <button disabled= {navigation.state === "submitting"}>
-                    {navigation.state === "submitting" ? "Logging in..." : "Log in"}
-                </button>
-            </Form>
-            <div className="form-suggest">
-                <p>Don't have an account?</p>
-                <p>Create one now</p>
-            </div>
         </div>
+
     )
 }
