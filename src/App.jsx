@@ -6,7 +6,7 @@ import Vans, {loader as vansLoader} from './assets/vans/vans'
 import VanDetails, {loader as vanDetailsLoader} from './assets/vans/vandetails'
 import "./server"
 import Layout from './components/layout'
-import Dashboard from './assets/host/dashboard'
+import Dashboard, {loader as dashboardLoader} from './assets/host/dashboard'
 import Income from './assets/host/income'
 import Reviews from './assets/host/reviews'
 import HostLayout from './components/hostlayout'
@@ -31,7 +31,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path= "vans/:id" element={<VanDetails/>} loader={ vanDetailsLoader } errorElement= {<Error/>} />
 
     <Route path= "/host" element={<HostLayout/>}>
-      <Route index element={<Dashboard/>} loader={async ({ request }) => await requireAuth(request)} />
+      <Route index element={<Dashboard/>} loader={dashboardLoader} />
       <Route path= "income" element={<Income/>} loader={async ({request}) => await requireAuth(request)} />
       <Route path= "vans" element={<HostVans/>} loader={hostVansLoader} errorElement= {<Error/>} />
 
