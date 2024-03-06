@@ -24,7 +24,7 @@ export default function Dashboard(){
                             <p className="host-van-price">${van.price}/day</p>
                         </div>
                     </div>
-                    <Link to={`/vans/${van.id}`}>View</Link>
+                    <Link to={`/host/vans/${van.id}`}>View</Link>
                 </div>
             
         ))

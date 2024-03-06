@@ -29,7 +29,7 @@ export default function HostVanDetail(){
                     to=".." 
                     relative="path" 
                     className="back-button">
-                    &larr; <span>Back to all vans</span>
+                    &larr; <span>Back to listed vans</span>
                 </Link>
                 <div className="host-van-index-wrapper">
                     <div className="host-van-initial">
