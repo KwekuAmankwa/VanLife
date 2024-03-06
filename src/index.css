@@ -398,17 +398,78 @@ font-weight: normal;
 .transactions {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
 }
 .host-van-single.transact{
   justify-content: space-between;
 }
 .host-van-single.transact h3{
   font-size: 36px;
+  margin: 20px 0;
 }
 .host-van-single.transact p {
   font-size: 20px;
+  font-weight: 600;
   color: #4D4D4D;
+}
+
+.host-review{
+  padding: 20px;
+}
+.initial-heading{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.initial-heading h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+.initial-heading p{
+  display: flex;
+  align-items: baseline;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4D4D4D;
+  gap: 5px;
+}
+.initial-heading p > span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4D4D4D;
+  text-decoration: underline;
+}
+.initial-image img{
+  width: 100%;
+}
+.end-reviews{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.review-star{
+  color: #FF8C38;
+  font-size: 24px;
+  padding: 2px;
+}
+.review .info{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.review .info p{
+  margin-bottom: 0;
+}
+.review .info .name{
+  font-size: 16px;
+  font-weight: 500 ;
+}
+.review .info .date{
+  font-size: 16px;
+  font-weight: 600 ;
+  color: #8C8C8C;
 }
 
 .host-vans-holder{
