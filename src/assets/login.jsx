@@ -13,10 +13,11 @@ export async function action({request}){
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
+    const pathname = new URL(request.url).searchParams.get("redirectTo") || "/host"
     try{
         const data = await loginUser({email, password})
         localStorage.setItem("loggedin", "true")
-        return redirect("/host")
+        return redirect(pathname)
     }
     catch(error){
         return error.message
@@ -33,7 +34,6 @@ export default function Login(){
         <div className="login-container">
             <h1>Sign in to your account</h1>
             {message && <h3>{message}</h3>}
-            {errorMessage && <h3 className="red">{errorMessage}</h3>}
             <Form className="login-form" method="post" replace >
                 <div className="login-inputs">
                     <input
