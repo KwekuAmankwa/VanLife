@@ -6,7 +6,9 @@ export async function requireAuth(request){
 
     const isLoggedIn = localStorage.getItem("loggedin")
 
-    const response = redirect(`/login?message=You must login first.&redirectTo=${pathname}`)
+    const message = "Login with email: b@b.com, password: p123"
+
+    const response = redirect(`/login?message=${message}&redirectTo=${pathname}`)
 
     if (!isLoggedIn) {
         throw Object.defineProperty(response, 'body', { value: true })
