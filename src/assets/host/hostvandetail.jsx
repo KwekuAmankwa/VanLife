@@ -5,7 +5,7 @@ import { getVan } from "../../api";
 import { requireAuth } from "../../utilities";
 
 
-export async function loader({params, request}){
+export async function loaderFunction({params, request}){
     await requireAuth(request)
     return getVan(params.id)
 }
