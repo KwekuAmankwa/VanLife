@@ -43,8 +43,13 @@ export default function Header (){
                 >
                     <img src={icon} alt="" className="login-icon" />
                 </NavLink>
-
-                {localStorage.key("loggedin") ? <button className="logout-btn" onClick={logout}>&#8618;</button> : ""}
+                {localStorage.key("loggedin") ? 
+                <NavLink 
+                className="logout-btn"
+                onClick={logout}>
+                    &#8618; 
+                </NavLink>
+                : ""}
             </nav>
         </header>
     )
