@@ -71,6 +71,10 @@ main{
   padding: 30px 15px;
 }
 
+.main-content a {
+  color: white;
+}
+
 .find-van{
   padding: 15px;
   border: none;
