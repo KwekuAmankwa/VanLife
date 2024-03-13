@@ -4,7 +4,7 @@ import { getHostVans } from "../../api";
 import { requireAuth } from "../../utilities";
 
 
-export async function loader({request}){
+export async function loaderFunction({request}){
     await requireAuth(request)
     return defer({vans: getHostVans()})
 }

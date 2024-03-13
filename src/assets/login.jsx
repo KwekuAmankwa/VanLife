@@ -4,26 +4,25 @@ import { loginUser } from "../api";
 
 
 
-export function loader({request}){
+export function loaderFunction({request}){
     return new URL(request.url).searchParams.get("message")
      
 }
 
-export async function action({request}){
+export async function actionFunction({request}){
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
     const pathname = new URL(request.url).searchParams.get("redirectTo") || "/host"
-    try{
-        const data = await loginUser({email, password})
+
+    const data = await loginUser({email, password})
+    console.log(data)
+    if (data) {
+
         localStorage.setItem("loggedin", "true")
-        // return redirect(pathname)
-        return window.location.replace(pathname)
-    }
-    catch(error){
-        
-        return error.message
-        
+        return redirect(pathname)
+    }else{
+        return "User does not exist."
     }
 }
 
@@ -31,13 +30,13 @@ export async function action({request}){
 export default function Login(){
     const navigation = useNavigation()
     const errorMessage = useActionData()
-    // console.log(errorMessage)
     const message = useLoaderData()
 
     return (
         <div className="login-container">
                 <h1>Sign in to your account</h1>
                 {message && <h3>{message}</h3>}
+                {errorMessage && <h3>{errorMessage}</h3>}
                 <Form className="login-form" method="post" replace >
                     <div className="login-inputs">
                         <input
@@ -45,12 +44,14 @@ export default function Login(){
                             name="email"
                             type="email"
                             placeholder="Email"
+                            required
                         />
                         <input
                             className="input-password"
                             name="password"
                             type="password"
                             placeholder="Password"
+                            required
                         />
                     </div>
                     <button disabled= {navigation.state === "submitting"}>
