@@ -35,6 +35,17 @@ nav > a {
   gap: 10px;
   align-items: center;
 }
+
+.logout-btn{
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  text-align: center;
+}
+.logout-btn:hover {
+  cursor: pointer;
+}
+
 .logo{
   max-width: 150px;
   /* height: 40px; */
@@ -80,6 +91,8 @@ main{
 }
 
 .headout{
+  display: flex;
+  flex-direction: column;
   margin-bottom: 84px;
 }
 
@@ -673,7 +686,9 @@ button.van-type{
 }
 
 .login-container {
+  max-width: 800px;
   padding: 20px;
+  margin: 0 auto;
   display: flex;
   gap: 30px;
   flex-direction: column;
