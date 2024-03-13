@@ -71,7 +71,7 @@ main{
   padding: 30px 15px;
 }
 
-.main-content a {
+.main-content a:link {
   color: white;
 }
 
